@@ -32,12 +32,14 @@ const skills = [
 ];
 
 export const Hero = () => {
-  const [dots] = useState(() => [...Array(30)].map(() => ({
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    duration: 15 + Math.random() * 20,
-    delay: Math.random() * 5,
-  })));
+  const [dots] = useState(() =>
+    [...Array(30)].map(() => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      duration: 15 + Math.random() * 20,
+      delay: Math.random() * 5,
+    })),
+  );
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -114,9 +116,15 @@ export const Hero = () => {
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
               <span className="text-sm text-muted-foreground">Follow me: </span>
               {[
-                { icon: Github, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Twitter, href: "#" },
+                {
+                  icon: Github,
+                  href: "https://github.com/Mahmudur-Rahman-Salman",
+                },
+                {
+                  icon: Linkedin,
+                  href: "https://www.linkedin.com/in/mahmudur-rahman-salman/",
+                },
+                // { icon: Twitter, href: "#" },
               ].map((social, idx) => (
                 <a
                   key={idx}
