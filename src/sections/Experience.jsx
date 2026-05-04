@@ -1,38 +1,41 @@
 const experiences = [
   {
-    period: "2022 — Present",
-    role: "Senior Frontend Engineer",
-    company: "Tech Innovators Inc.",
-    description:
-      "Leading frontend architecture for a suite of fintech products. Implemented micro-frontend architecture, reduced bundle size by 40%, and mentored a team of 5 developers.",
-    technologies: ["React", "TypeScript", "Next.js", "GraphQL"],
+    period: "April 2022 — June 2022",
+    role: "Frontend Developer Intern",
+    company: "RankItRight Media",
+    description: [
+      "Collaborated with a remote, multi-disciplinary team to deliver feature enhancements for the Ful.io platform while maintaining clear communication with developers and stakeholders.",
+
+      "Contributed to sprint planning and review meetings, gaining practical experience in Agile workflows, task coordination, and iterative product delivery.",
+    ],
+    technologies: [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "Git",
+      "Agile",
+      "Remote Collaboration",
+    ],
     current: true,
   },
+
   {
-    period: "2020 — 2022",
-    role: "Frontend Engineer",
-    company: "Digital Solutions Co.",
-    description:
-      "Built and maintained multiple React applications for enterprise clients. Introduced automated testing practices that improved code coverage to 85%.",
-    technologies: ["React", "Redux", "Jest", "Cypress"],
-    current: false,
-  },
-  {
-    period: "2019 — 2020",
-    role: "Junior Developer",
-    company: "StartUp Labs",
-    description:
-      "Contributed to the development of a SaaS platform from MVP to production. Collaborated with designers to implement pixel-perfect UI components.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS"],
-    current: false,
-  },
-  {
-    period: "2018 — 2019",
-    role: "Freelance Developer",
-    company: "Self-Employed",
-    description:
-      "Delivered custom web solutions for small businesses and startups. Built 15+ websites and applications, handling everything from design to deployment.",
-    technologies: ["JavaScript", "PHP", "WordPress", "MySQL"],
+    period: "2017 — Present",
+    role: "Senior Executive",
+    company: "Rahman Medicine",
+    description: [
+      "Advanced from Junior to Senior Executive through consistent performance and increased operational responsibility.",
+
+      "Managed inventory, stock tracking, and data records with a strong focus on accuracy, organization, and operational efficiency.",
+
+      "Handled daily business operations, resource coordination, and process monitoring in a fast-paced environment.",
+    ],
+    technologies: [
+      "Inventory Management",
+      "Data Management",
+      "Operations Coordination",
+      "Leadership",
+    ],
     current: false,
   },
 ];
@@ -98,7 +101,7 @@ export const Experience = () => {
                 <div
                   className={`pl-8 md:pl-0 ${
                     idx % 2 === 0
-                      ? "md:pr-16 md:text-right"
+                      ? "md:pr-16 md:text-left"
                       : "md:col-start-2 md:pl-16"
                   }`}
                 >
@@ -110,9 +113,11 @@ export const Experience = () => {
                     </span>
                     <h3 className="text-xl font-semibold mt-2">{exp.role}</h3>
                     <p className="text-muted-foreground">{exp.company}</p>
-                    <p className="text-sm text-muted-foreground mt-4">
-                      {exp.description}
-                    </p>
+                    <ul className="mt-4 space-y-2 text-sm text-muted-foreground list-disc list-inside">
+                      {exp.description.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
                     <div
                       className={`flex flex-wrap gap-2 mt-4 ${
                         idx % 2 === 0 ? "md:justify-end" : ""

@@ -4,38 +4,48 @@ import { useState } from "react";
 const testimonials = [
   {
     quote:
-      "Pedro is one of the most talented engineers I've worked with. His attention to detail and ability to translate complex requirements into elegant solutions is remarkable.",
-    author: "Sarah Chen",
-    role: "CTO, Tech Innovators Inc.",
+      "Salman consistently showed strong ownership and reliability while collaborating with the team. He adapted quickly to frontend workflows and contributed effectively in a remote development environment.",
+
+    author: "Team Lead",
+    role: "RankItRight Media",
+
     avatar:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
   },
+
   {
     quote:
-      "Working with Pedro was a game-changer for our project. He delivered ahead of schedule with code quality that set a new standard for our team.",
-    author: "Michael Rodriguez",
-    role: "Product Manager, Digital Solutions",
+      "His ability to manage operations, inventory, and business processes with accuracy demonstrates a level of discipline and responsibility that transfers well into technical project environments.",
+
+    author: "Business Supervisor",
+    role: "Rahman Medicine",
+
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
   },
+
   {
     quote:
-      "Pedro's expertise in React and TypeScript helped us rebuild our entire frontend in record time. His architectural decisions continue to pay dividends.",
-    author: "Emily Watson",
-    role: "Engineering Lead, StartUp Labs",
+      "Salman approaches problems with patience and structure. Whether handling frontend tasks or operational responsibilities, he focuses on consistency, organization, and continuous improvement.",
+
+    author: "Senior Colleague",
+    role: "Operations & Development",
+
     avatar:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
   },
+
   {
     quote:
-      "Not only is Pedro technically brilliant, but he's also a fantastic communicator and team player. He elevated everyone around him.",
-    author: "David Kim",
-    role: "CEO, Innovation Hub",
+      "He communicates clearly, works well under pressure, and takes feedback seriously. Those qualities make him dependable in both collaborative and fast-paced working environments.",
+
+    author: "Project Collaborator",
+    role: "Remote Team Environment",
+
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
   },
 ];
-
 export const Testimonials = () => {
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -45,7 +55,7 @@ export const Testimonials = () => {
 
   const previous = () => {
     setActiveIdx(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
     );
   };
   return (
