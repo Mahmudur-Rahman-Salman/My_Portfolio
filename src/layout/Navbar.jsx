@@ -54,7 +54,15 @@ export const Navbar = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button size="sm">Resume</Button>
+          <Button size="sm">
+            <a
+              href="https://drive.google.com/file/d/16YWLyu2IRwUQKCKwdcn2jwcbFyvdBhXO/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -80,9 +88,18 @@ export const Navbar = () => {
                 {link.label}
               </a>
             ))}
-
-            <Button onClick={() => setIsMobileMenuOpen(false)}>
-              Contact Me
+            <Button
+              asChild
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-lg text-muted-foreground hover:text-foreground py-2"
+            >
+              <a
+                href="https://drive.google.com/file/d/16YWLyu2IRwUQKCKwdcn2jwcbFyvdBhXO/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Resume
+              </a>
             </Button>
           </div>
         </div>
