@@ -55,7 +55,7 @@ export const Contact = () => {
 
       if (!serviceId || !templateId || !publicKey) {
         throw new Error(
-          "EmailJS configuration is missing. Please check your environment variables."
+          "EmailJS configuration is missing. Please check your environment variables.",
         );
       }
 
@@ -67,7 +67,7 @@ export const Contact = () => {
           email: formData.email,
           message: formData.message,
         },
-        publicKey
+        publicKey,
       );
 
       setSubmitStatus({
@@ -87,33 +87,40 @@ export const Contact = () => {
     }
   };
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
+    <section id="contact" className="py-20 md:py-32 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-72 md:w-96 h-72 md:h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-52 md:w-64 h-52 md:h-64 bg-highlight/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
             Get In Touch
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
+
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6
+        animate-fade-in animation-delay-100 text-secondary-foreground leading-tight"
+          >
             Let's build{" "}
             <span className="font-serif italic font-normal text-white">
               something great.
             </span>
           </h2>
-          <p className="text-muted-foreground animate-fade-in animation-delay-200">
+
+          <p className="text-muted-foreground animate-fade-in animation-delay-200 text-sm sm:text-base leading-relaxed">
             Have a project in mind? I'd love to hear about it. Send me a message
             and let's discuss how we can work together.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <div className="glass p-8 rounded-3xl border border-primary/30 animate-fade-in animation-delay-300">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+          {/* Contact Form */}
+          <div className="glass p-6 md:p-8 rounded-3xl border border-primary/30 animate-fade-in animation-delay-300">
             <form className="space-y-6" onSubmit={handleSubmit}>
+              {/* Name */}
               <div>
                 <label
                   htmlFor="name"
@@ -121,6 +128,7 @@ export const Contact = () => {
                 >
                   Name
                 </label>
+
                 <input
                   id="name"
                   type="text"
@@ -128,31 +136,41 @@ export const Contact = () => {
                   placeholder="Your name..."
                   value={formData.name}
                   onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
+                    setFormData({
+                      ...formData,
+                      name: e.target.value,
+                    })
                   }
                   className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                 />
               </div>
 
+              {/* Email */}
               <div>
                 <label
                   htmlFor="email"
-                  type="email"
                   className="block text-sm font-medium mb-2"
                 >
                   Email
                 </label>
+
                 <input
+                  id="email"
+                  type="email"
                   required
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
+                    setFormData({
+                      ...formData,
+                      email: e.target.value,
+                    })
                   }
                   className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                 />
               </div>
 
+              {/* Message */}
               <div>
                 <label
                   htmlFor="message"
@@ -160,20 +178,26 @@ export const Contact = () => {
                 >
                   Message
                 </label>
+
                 <textarea
+                  id="message"
                   rows={5}
                   required
+                  placeholder="Your message..."
                   value={formData.message}
                   onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
+                    setFormData({
+                      ...formData,
+                      message: e.target.value,
+                    })
                   }
-                  placeholder="Your message..."
                   className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
                 />
               </div>
 
+              {/* Submit Button */}
               <Button
-                className="w-full"
+                className="w-full flex items-center justify-center gap-2"
                 type="submit"
                 size="lg"
                 disabled={isLoading}
@@ -188,32 +212,37 @@ export const Contact = () => {
                 )}
               </Button>
 
+              {/* Status Message */}
               {submitStatus.type && (
                 <div
-                  className={`flex items-center gap-3
-                     p-4 rounded-xl ${
-                       submitStatus.type === "success"
-                         ? "bg-green-500/10 border border-green-500/20 text-green-400"
-                         : "bg-red-500/10 border border-red-500/20 text-red-400"
-                     }`}
+                  className={`flex items-start gap-3 p-4 rounded-xl break-words ${
+                    submitStatus.type === "success"
+                      ? "bg-green-500/10 border border-green-500/20 text-green-400"
+                      : "bg-red-500/10 border border-red-500/20 text-red-400"
+                  }`}
                 >
                   {submitStatus.type === "success" ? (
-                    <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                    <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   )}
-                  <p className="text-sm">{submitStatus.message}</p>
+
+                  <p className="text-sm leading-relaxed">
+                    {submitStatus.message}
+                  </p>
                 </div>
               )}
             </form>
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-6 animate-fade-in animation-delay-400">
-            <div className="glass rounded-3xl p-8">
+          <div className="space-y-6 animate-fade-in animation-delay-400 w-full">
+            {/* Contact Card */}
+            <div className="glass rounded-3xl p-6 md:p-8">
               <h3 className="text-xl font-semibold mb-6">
                 Contact Information
               </h3>
+
               <div className="space-y-4">
                 {contactInfo.map((item, i) => (
                   <a
@@ -221,14 +250,18 @@ export const Contact = () => {
                     href={item.href}
                     className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface transition-colors group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors flex-shrink-0">
                       <item.icon className="w-5 h-5 text-primary" />
                     </div>
-                    <div>
+
+                    <div className="min-w-0">
                       <div className="text-sm text-muted-foreground">
                         {item.label}
                       </div>
-                      <div className="font-medium">{item.value}</div>
+
+                      <div className="font-medium break-words text-sm sm:text-base">
+                        {item.value}
+                      </div>
                     </div>
                   </a>
                 ))}
@@ -236,15 +269,17 @@ export const Contact = () => {
             </div>
 
             {/* Availability Card */}
-            <div className="glass rounded-3xl p-8 border border-primary/30">
+            <div className="glass rounded-3xl p-6 md:p-8 border border-primary/30">
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+
                 <span className="font-medium">Currently Available</span>
               </div>
-              <p className="text-muted-foreground text-sm">
+
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 I'm currently open to new opportunities and exciting projects.
-                Whether you need a full-time engineer or a freelance consultant,
-                let's talk!
+                Whether you need a frontend developer, full-time engineer, or
+                freelance collaborator, let's connect.
               </p>
             </div>
           </div>
